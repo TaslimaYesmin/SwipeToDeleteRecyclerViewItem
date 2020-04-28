@@ -3,8 +3,6 @@ package com.example.swipetodeleterecyclerview;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,12 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
-
-        populateRecyclerView();
+        RecyclerViewItem();
         enableSwipeToDeleteAndUndo();
 
     }
-    private void populateRecyclerView() {
+    private void RecyclerViewItem() {
         stringArrayList.add("Item 1");
         stringArrayList.add("Item 2");
         stringArrayList.add("Item 3");
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         stringArrayList.add("Item 9");
         stringArrayList.add("Item 10");
 
-        mAdapter = new RecyclerViewAdapter(stringArrayList);
+        mAdapter = new RecyclerViewAdapter(this,stringArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
     }
